@@ -7,6 +7,10 @@ const ioHandler = (req, res) => {
         io.on("connection", socket => {
             console.log(`  -> ${socket.id} connected`);
         
+            socket.on('test', () => {
+                io.emit('returnTest');
+            });
+
             socket.on('disconnect', () => {
                 console.log(`  <- ${socket.id} disconnected`);
             });
